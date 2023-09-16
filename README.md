@@ -16,8 +16,8 @@
 4. body>: Contains the visible content of the web page.
    - <div>: A container for grouping elements.
    - <header> Represents the header section of the web page.
-   - <a>: Defines hyperlinks.
-   - <h1>, <h2>, <h3>, <h4>: Heading elements.
+   - a : Defines hyperlinks.
+   - h1, h2, h3, h4: Heading elements.
    - <p>: Paragraphs of text.
    - <button>: A clickable button element.
    - <img>: Embeds images.
