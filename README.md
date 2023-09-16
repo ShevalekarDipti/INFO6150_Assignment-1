@@ -6,7 +6,7 @@
 
 3. <head>: Contains meta-information about the document and links to external resources.
    - <meta>: Metadata about the document.
-     - `http-equiv="Content-Type"`: Specifies the character encoding.
+     -`http-equiv="Content-Type": Specifies the character encoding.
      - name="viewport": Defines the viewport settings for responsive design.
    - <link>: Links to external resources.
      - rel="icon": Specifies the website's favicon.
