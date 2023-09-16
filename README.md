@@ -4,7 +4,7 @@
 
 3. head: Contains meta-information about the document and links to external resources.
    - meta: Metadata about the document.
-     - `http-equiv="Content-Type"`: Specifies the character encoding.
+     - http-equiv="Content-Type": Specifies the character encoding.
      - name="viewport": Defines the viewport settings for responsive design.
    - link: Links to external resources.
      - rel="icon": Specifies the website's favicon.
@@ -21,7 +21,7 @@
    - img: Embeds images.
    - video: Embeds videos.
    - details: Creates a disclosure widget to hide or show content.
-   - summary: Defines the summary or label for a <details> element.
+   - summary: Defines the summary or label for a details element.
 
 5. button: A clickable button element.
 
