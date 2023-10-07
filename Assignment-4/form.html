@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+        label {
+            float: left;
+            width: 150px;
+        }
+
+        #container {
+            width: 700px;
+            margin: auto;
+            background-color: beige;
+        }
+
+        main {
+            padding: 50px;
+        }
+    </style>
+</head>
+
+<body id="container">
+    <main>
+        <h2>Feedback</h2>
+        <h3>Love something? Hate something? Let us know!</h3>
+        <h4>Note : Fields mark with an asterik(*) are mandatory</h4>
+        <br><br>
+
+        <form id="myForm">
+            <label>Title*:</label>
+            <input type="radio" name="title" id="miss" value="miss" required="required" /> Miss
+            <input type="radio" name="title" id="mr" value="mr" required="required" /> Mr.
+            <input type="radio" name="title" id="mrs" value="mrs" required="required" /> Mrs.
+            <br><br>
+
+            <label for="firstName">First Name*:</label>
+            <input type="text" name="firstName" id="firstName" placeholder="First Name" required minlength="2"
+                maxlength="50">
+            <br><br>
+
+            <div id="error_firstName" style="display: none; color:red;">
+                First Name is invalid, Please enter valid name.
+                <br><br>
+            </div>
+
+            <label for="lastName">Last Name*:</label>
+            <input type="text" name="lastName" id="lastName" placeholder="Last Name" required minlength="2"
+                maxlength="50">
+            <br><br>
+
+            <div id="error_lastName" style="display: none; color:red;">
+                Last Name is invalid, Please enter valid name.
+                <br><br>
+            </div>
+
+            <label for="emailId">Email Id*:</label>
+            <input type="text" name="emailId" id="emailId" placeholder="yourname@domain.com" required>
+            <br><br>
+
+            <div id="error_emailId" style="display: none; color:red;">
+                Email is invalid, Please enter valid email in user@northeastern.edu
+                <br><br>
+            </div>
+
+            <label for="phoneNumber">Phone Number*:</label>
+            <input type="text" name="phoneNumber" id="phoneNumber" placeholder="xxx-xxx-xxxx"
+                pattern="\d{3}-?\d{3}-\d{4}" required>
+            <br><br>
+
+            <div id="error_phoneNumber" style="display:none; color:red;">
+                Phone Number is invalid, enter in xxx-xxx-xxxx format.
+                <br><br>
+            </div>
+
+            <label for="streetAddress1">Street Address 1*:</label>
+            <input type="text" name="streetAddress1" id="streetAddress1" placeholder="Street Address 1" required
+                minlength="2" maxlength="50">
+            <br><br>
+
+            <div id="error_streetAddress1" style="display: none; color:red;">
+                Street Address is invalid, Please enter valid street address.
+                <br><br>
+            </div>
+
+            <label for="streetAddress2">Street Address 2:</label>
+            <input type="text" name="streetAddress2" id="streetAddress2" placeholder="Street Address 2" minlength="2"
+                maxlength="50">
+            <br><br>
+
+            <div id="error_streetAddress2" style="display: none; color:red;">
+                Street Address is invalid, Please enter a valid street address.
+                <br><br>
+            </div>
+
+            <label for="city">City*:</label>
+            <input type="text" name="city" id="city" placeholder="city" required minlength="2" maxlength="50">
+            <br><br>
+
+            <div id="error_city" style="display: none; color:red;">
+                Invalid city Please enter a valid city.
+                <br><br>
+            </div>
+
+            <label for="state">State*:</label>
+            <input type="text" name="state" id="state" placeholder="state" required minlength="2" maxlength="50">
+            <br><br>
+
+            <div id="error_state" style="display: none; color:red;">
+                State entry is invalid, Please enter a valid street address.
+                <br><br>
+            </div>
+
+            <label for="zipCode">Zip Code*:</label>
+            <input type="text" name="zipCode" id="zipCode" placeholder="Zip Code" required minlength="2" maxlength="50">
+            <br><br>
+
+            <div id="error_zipCode" style="display: none; color:red;">
+                Zip Code is invalid, Please enter a valid zip code.
+                <br><br>
+            </div>
+
+            <!-- Add a select list box with 5 elements -->
+            <label for="default">How did you hear about Us?1:</label>
+            <select id="optnList" onchange="txtToggleField()">
+                <option value="default">Select</option>
+                <option value="google">Google</option>
+                <option value="yelp">Yelp</option>
+                <option value="linkedin">LinkedIn</option>
+                <option value="indeed">Indeed</option>
+                <option value="job fair">Job Fair</option>
+            </select>
+
+            <br><br>
+            <label for="checkbox">Comments:</label>
+            <span id="msgTxt"></span>
+            <input type="checkbox" id="checkbox" onchange="msgToggle()">
+
+            <br><br>
+
+            <div id="txtFldContainer" style="display: none;">
+                <label for="txtField">Text Field:</label>
+                <input type="text" id="txtField" required>
+            </div>
+
+            <input type="Submit" value="Submit" id="submitButton" disabled onclick="entryOutput()">
+            <input type="Reset" name="resetButton" id="resetButton">
+            <br><br>
+
+        </form>
+
+        <!-- Results Table -->
+        <div id="resultsTableContainer" style="display: none;">
+            <h2>Results</h2>
+            <table id="resultsTable" border="1">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Street Address 1</th>
+                        <th>Street Address 2</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Zip Code</th>
+                        <th>How Did You Hear About Us?</th>
+                        <th>Message</th>
+                        <th>Text Field</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+    </main>
+    <script>
+        var form = document.getElementById("myForm");
+        var submitButton = document.getElementById("submitButton");
+        //    var selectList = document.getElementById("selectList");
+
+        form.addEventListener("submit", AfterSubmitting);
+
+        // Initially, hide the text field container
+        var txtFldContainer = document.getElementById("txtFldContainer");
+        txtFldContainer.style.display = "none";
+
+
+        function msgToggle(e) {
+            var checkbox = document.getElementById("checkbox");
+            var msgTxt = document.getElementById("msgTxt");
+
+            if (checkbox.checked) {
+                msgTxt.textContent = "Please enter a message";
+                txtFldContainer.style.display = "block";
+                document.getElementById("txtField").required = true;
+            } else {
+                msgTxt.textContent = "";
+                txtFldContainer.style.display = "none";
+                document.getElementById("txtField").required = false;
+            }
+        }
+
+        //validate all the fields
+        var validFN = false;
+        var validLN = false;
+        var validE = false;
+        var validPN = false;
+        var validST1 = false;
+        var validC = false;
+        var validSt = false;
+        var validZC = false;
+
+
+        var regExFN = /^[a-zA-Z]+$/;
+        var regExLN = /^[a-zA-Z]+$/;
+        var regExE = /^[a-zA-Z0-9._%+-]+@northeastern\.edu$/;
+        var regExPN = /\d{3}-?\d{3}-\d{4}$/;
+        //  var regExName = /^[a-zA-Z]+$/;
+        var regExST1 = /^[a-zA-Z0-9\s#.-]+$/;
+        var regExC = /^[a-zA-Z\s'-]{2,50}$/;
+        var regExSt = /^[a-zA-Z\s'-]{2,50}$/;
+        var regExZP = /^\d{5}$/;
+
+        //values
+        var firstName = document.getElementById("firstName");
+        firstName.addEventListener("input", validate);
+
+        var lastName = document.getElementById("lastName");
+        lastName.addEventListener("input", validate);
+
+        var emailId = document.getElementById("emailId");
+        emailId.addEventListener("input", validate);
+
+        var phoneNumber = document.getElementById("phoneNumber");
+        phoneNumber.addEventListener("input", validate);
+
+        var streetAddress1 = document.getElementById("streetAddress1");
+        streetAddress1.addEventListener("input", validate);
+
+        var zipCode = document.getElementById("zipCode");
+        zipCode.addEventListener("input", validate);
+
+        var city = document.getElementById("city");
+        city.addEventListener("input", validate);
+
+        var state = document.getElementById("state");
+        state.addEventListener("input", validate);
+
+        var resetButton = document.getElementById("resetButton");
+
+        resetButton.addEventListener("click", function () {
+            form.reset();
+            removeErrorMsg();
+        });
+
+
+        function validate(e) {
+
+            var value = e.target.value;
+            var type = this.id;
+            var em = "error_" + type;
+
+            switch (type) {
+                case "firstName":
+                    if (!value.trim().match(regExFN) || value.length < 2 || value.length > 50) {
+                        document.getElementById(em).style.display = "block";
+                        this.style.border = "2px solid red";
+                        validFN = false;
+                        console.log("validname", validName);
+                    }
+                    else {
+                        document.getElementById(em).style.display = "none";
+                        this.style.border = "";
+                        validFN = true;
+                        console.log("validname", validname);
+                    }
+                    break;
+                case "lastName":
+                    if (!value.trim().match(regExLN) || value.length < 2 || value.length > 50) {
+                        document.getElementById(em).style.display = "block";
+                        this.style.border = "2px solid red";
+                        validLN = false;
+                        console.log("validname", validName);
+                    }
+                    else {
+                        document.getElementById(em).style.display = "none";
+                        this.style.border = "";
+                        validLN = true;
+                        console.log("validname", validname);
+                    }
+                    break;
+                case "emailId":
+                    if (!value.trim().match(regExE)) {
+                        document.getElementById(em).style.display = "block";
+                        this.style.border = "2px solid red";
+                        validE = false;
+                        console.log("valid Email", validE);
+                    }
+                    else {
+                        document.getElementById(em).style.display = "none";
+                        this.style.border = "";
+                        validE = true;
+                        console.log("valid Email", validE);
+                    }
+                    break;
+                case "phoneNumber":
+                    if (!value.trim().match(regExPN)) {
+                        document.getElementById(em).style.display = "block";
+                        this.style.border = "2px solid red";
+                        validPN = false;
+                        console.log("valid Phone", validPN);
+                    }
+                    else {
+                        document.getElementById(em).style.display = "none";
+                        this.style.border = "";
+                        validPN = true;
+                        console.log("valid Phone", validPN);
+                    }
+                    break;
+
+                case "streetAddress1":
+                    if (!value.trim().match(regExST1) || value.length < 2 || value.length > 50) {
+                        document.getElementById(em).style.display = "block";
+                        this.style.border = "2px solid red";
+                        validST1 = false;
+                    } else {
+                        document.getElementById(em).style.display = "none";
+                        this.style.border = "";
+                        validST1 = true;
+                    }
+                    break;
+
+                case "city":
+                    if (!value.trim().match(regExC)) {
+                        document.getElementById(em).style.display = "block";
+                        this.style.border = "2px solid red";
+                        validC = false;
+                    } else {
+                        document.getElementById(em).style.display = "none";
+                        this.style.border = "";
+                        validC = true;
+                    }
+                    break;
+                case "state":
+                    if (!value.trim().match(regExSt)) {
+                        document.getElementById(em).style.display = "block";
+                        this.style.border = "2px solid red";
+                        validSt = false;
+                    } else {
+                        document.getElementById(em).style.display = "none";
+                        this.style.border = "";
+                        validSt = true;
+                    }
+                    break;
+                case "zipCode":
+                    if (!value.trim().match(regExZP)) {
+                        document.getElementById(em).style.display = "block";
+                        this.style.border = "2px solid red";
+                        validZC = false;
+                    } else {
+                        document.getElementById(em).style.display = "none";
+                        this.style.border = "";
+                        validZC = true;
+                    }
+                    break;
+            }
+
+
+            if (validFN && validE && validPN && validZC && validC && validSt) {
+                submitButton.disabled = false;
+            } else {
+                submitButton.disabled = true;
+            }
+        }
+
+
+        function AfterSubmitting(e) {
+
+            var sTAddress2 = document.getElementById("streetAddress2");
+
+
+            if (validFN && validE && validPN && validZC && validC && validSt) {
+                alert("Data entered Successfully.");
+            }
+            else {
+                alert("Please make valid entries.");
+            }
+
+            if (sTAddress2.value.trim() === "") {
+                sTAddress2.value = "";
+            }
+
+        }
+        function txtToggleField() {
+            var optnList = document.getElementById('optnList');
+            var txtFldContainer = document.getElementById('txtFldContainer');
+            var msgTxt = document.getElementById('msgTxt');
+
+            if (optnList.value === 'google') {
+                msgTxt.textContent = 'Search:';
+            } else if (optnList.value === 'yelp') {
+                msgTxt.textContent = 'Spam:';
+            } else if (optnList.value === 'linkedin') {
+                msgTxt.textContent = 'Shares:';
+            } else if (optnList.value === 'indeed') {
+                msgTxt.textContent = 'Job postings:';
+            } else if (optnList.value === 'job fair') {
+                msgTxt.textContent = 'Word of Mouth';
+            }
+            else {
+                msgTxt.textContent = '';
+            }
+
+
+            if (optnList.value !== 'default' && document.getElementById('checkbox').checked) {
+                txtFldContainer.style.display = 'block';
+                document.getElementById('txtField').required = true;
+            } else {
+                txtFldContainer.style.display = 'none';
+                document.getElementById('txtField').required = false;
+            }
+        }
+
+        function msgToggle() {
+            txtToggleField();
+        }
+
+        function entryOutput() {
+
+            var title = document.querySelector('input[name="title"]:checked').value;
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var email = document.getElementById("emailId").value;
+            var phoneNumber = document.getElementById("phoneNumber").value;
+            var streetAddress1 = document.getElementById("streetAddress1").value;
+            var streetAddress2 = document.getElementById("streetAddress2").value;
+            var city = document.getElementById("city").value;
+            var state = document.getElementById("state").value;
+            var zipCode = document.getElementById("zipCode").value;
+            var optnList = document.getElementById("optnList").value;
+            var checkbox = document.getElementById("checkbox").checked;
+            var txtField = document.getElementById("txtField").value;
+
+            var table = document.getElementById("resultsTable").getElementsByTagName("tbody")[0];
+            var newRow = table.insertRow(table.rows.length);
+
+            var rowData = [title, firstName, lastName, email, phoneNumber, streetAddress1, streetAddress2, city, state, zipCode, optnList, checkbox ? "Yes" : "No", txtField];
+
+            for (var i = 0; i < rowData.length; i++) {
+                var cell = newRow.insertCell(i);
+                cell.innerHTML = rowData[i];
+            }
+
+
+            form.reset();
+            document.getElementById("resultsTableContainer").style.display = "block";
+            document.getElementById("submitButton").disabled = true;
+            txtFldContainer.style.display = "none";
+        }
+
+
+        function removeErrorMsg() {
+            var errorElements = document.querySelectorAll("[id^='error_']");
+            var inputFields = document.querySelectorAll("input[type='text']");
+
+
+            errorElements.forEach(function (errorElement) {
+                errorElement.style.display = "none";
+            });
+
+            inputFields.forEach(function (inputField) {
+                inputField.style.border = "";
+            });
+
+            validFN = false;
+            validLN = false;
+            validE = false;
+            validPN = false;
+            validST1 = false;
+            validStreetAddress2 = false;
+            validC = false;
+            validSt = false;
+            validZC = false;
+
+            submitButton.disabled = true;
+        }
+    </script>
+
+</body>
+
+</html>
