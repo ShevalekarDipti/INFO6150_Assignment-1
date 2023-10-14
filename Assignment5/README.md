@@ -65,6 +65,14 @@ It sets the background-color to $bg-clr, font-size to 14pt, and padding to creat
 When the button is hovered over, it changes the background-color and cursor to indicate interactivity.
 These variables and styles make it easy to maintain and change the appearance of your website, ensuring consistency and a visually appealing design. You can adjust the variable values to fine-tune the styling of different elements on your website.
 
+13. Buttons.scss -
+    This file has all the styles related to buttons in the html page and has been imported into the style.scss.
 
+14. Mobile.scss -
+    This file has all the variables and header part css included in it.
+
+15. Inheritance feature of scss has been used in the useful links div in the style.scss.
+16. config.scss-
+    This file has all the css related to main container of the page.
 
 These features make the SCSS code more maintainable and efficient, enabling you to define and reuse styles, making it easier to create a consistent and visually appealing website.
