@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Calculator for  <span id="loggedInUser"></span></h1>
+    <div>
+      <label for="number1">Number 1:</label>
+      <input type="text" id="number1">
+      <div class="error" id="number1Error"></div>
+    </div>
+    <div>
+      <label for="number2">Number 2:</label>
+      <input type="text" id="number2">
+      <div class="error" id="number2Error"></div>
+    </div>
+    <div>
+      <button id="add">Add</button>
+      <button id="subtract">Subtract</button>
+      <button id="multiply">Multiply</button>
+      <button id="divide">Divide</button>
+    </div>
+    <div>
+      <label>Output:</label>
+      <input type="text" id="result" readonly>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="SecondPageScript.js"></script>
+</body>
+</html>
